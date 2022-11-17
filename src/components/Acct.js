@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, ListGroup } from 'react-bootstrap';
+import { Button, ButtonGroup, Row, Col, Card, ListGroup } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
 const Account = (props) => {
@@ -29,34 +29,49 @@ const Account = (props) => {
   // END PROP HANDLE STATE //
   return (
     <>
-    <Card>
+    <Card size="md" >
         <Card.Title>Account Name</Card.Title>
-        <Card.Subtitle>Balance</Card.Subtitle>
         
         <Card.Body>
-            <Button variant="primary" onClick={handleShow}>
-                Details
-            </Button>
+          <Row>
+            <Col>Balance:</Col>
+            <Col>$$$$$</Col>
+            
+          </Row>
+          
         </Card.Body>
         <Card.Footer>
-            <Button variant="primary">History</Button>
-            <Button variant="primary">Deposits</Button>
-            <Button variant="primary">Transactions</Button> 
+          <Row>
+            <Col>
+              <ButtonGroup className="me2">
+                <Button variant="outline-dark">History</Button>
+                <Button variant="outline-dark">Deposits</Button>
+                <Button variant="outline-dark">Transactions</Button> 
+              </ButtonGroup>
+            </Col>
+              
+            <Col>
+              <ButtonGroup>
+                <Button variant="outline-danger" onClick={handleShow}>Edit</Button>
+                <Button variant="outline-danger">Delete</Button>
+              </ButtonGroup>
+            </Col>
+          </Row>
         </Card.Footer>
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-            <Modal.Title>Account Name</Modal.Title>
+            <Modal.Title>Future Edit Form</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <ListGroup variant="flush">
-                    <ListGroup.Item>Name:</ListGroup.Item>
-                    <ListGroup.Item>Balance:</ListGroup.Item>
+                    <ListGroup.Item>Form Here</ListGroup.Item>
+                    <ListGroup.Item>For Editing Account Info</ListGroup.Item>
                 </ListGroup>
+
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary">Edit</Button>
-                <Button variant="primary">Delete</Button>
+              
             </Modal.Footer>
         </Modal>
       </Card>
