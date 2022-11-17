@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from "react-bootstrap";
 import Header from './components/Header';
-
+import Account from './components/Acct'
 
 
 function App() {
@@ -26,11 +26,12 @@ function App() {
         await fetch(url, {
           method: 'POST',
           body: JSON.stringify(loginBody),
+          withCredentials: true,
+          credentials: "same-origin",
           headers: {
             'Content-Type': 'application/json',
             'Connection': 'keep-alive'
-          },
-          credentials: "include"
+          }          
         })
         .then(res => {
           if(res.status === 200) {
@@ -78,7 +79,8 @@ function App() {
   const acctsGet = () => {
     const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/"
     fetch(url, {
-      credentials: "include"
+      withCredentials: true,
+      credentials: "same-origin"
     })
     .then(res => {
         if(res.status === 200) {
@@ -111,6 +113,7 @@ function App() {
     <div className="App">
       <Header logOut={logOut} signIn={signIn} />
       <Button onClick={acctsGet}>Account Get</Button> 
+      <Account></Account>
     </div>
   );
 }
