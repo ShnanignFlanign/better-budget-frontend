@@ -10,22 +10,11 @@ const Account = (props) => {
   // END MODAL STATE // 
 
   // START PROP HANDLE STATE //
-//   const emptyForm = {email: '', password: ''}
-//     const [form, setForm] = useState(emptyForm)
 
-//     const handleChange = (e) => {
-//       setForm((prev) => ({...form, [e.target.name]: e.target.value}))
-//     }
+    //NEED EDIT ACCT SUBMIT HANDLER//
+    //NEED DELETE ACCT SUBMIT HANDLER// 
+    
 
-//     const handleSubmit = (e) => {
-//       e.preventDefault()
-//       props.signIn(e)
-//       setForm({
-//         email: '',
-//         password: ''
-//       })
-//       handleClose()
-//     }
   // END PROP HANDLE STATE //
   return (
     <>
