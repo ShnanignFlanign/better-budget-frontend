@@ -24,7 +24,6 @@ function App() {
         await fetch(url, {
           method: 'POST',
           body: JSON.stringify(loginBody),
-          // withCredentials: true,
           credentials: "include",
           headers: {
             'Content-Type': 'application/json'
@@ -42,24 +41,20 @@ function App() {
             setUser(data.data)
             acctsGet()
         })     
-        
-        // if (resJson.status === 200) {
-        //   console.log("Logged in!")
-        //   // acctsGet()
-        // }
       }
       catch (err) {
         console.log('Error => ', err);
       }
-  }
+  }// END sign in // 
+
   const userReg = () => {}
+
   const logOut = async (e) => {
     e.preventDefault()
     const url = process.env.REACT_APP_BACKEND_URL + '/user/logout'
     try {
       const response = await fetch(url, {
         method: 'GET',
-        // withCredentials: true,
         credentials: "include",
         headers: {
           "Content-Type": "application/json"
@@ -77,12 +72,11 @@ function App() {
     catch (err) {
       console.log('Error => ', err);
     }
-  }
+  }// END log out //
 
   const acctsGet = () => {
     const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/"
     fetch(url, {
-      // withCredentials: true,
       credentials: "include",
       headers: {
         "Content-Type": "application/json"
@@ -125,6 +119,7 @@ function App() {
         <Account key={acct.id} acct={acct}></Account>
         )
       })}
+      {/* Put logged in view vs logged out view in one terinary operator. No need for user portal component or AcctItem component. Welcome Component can just show example accounts */}
       
     </div>
   );

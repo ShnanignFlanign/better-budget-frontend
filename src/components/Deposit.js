@@ -11,15 +11,6 @@ const Deposit = (props) => {
         setShow(true);
     }
 
-    // END MODAL STATE // 
-  
-    // START PROP HANDLE STATE //
-  
-      //NEED EDIT ACCT SUBMIT HANDLER//
-      //NEED DELETE ACCT SUBMIT HANDLER// 
-      
-  
-    // END PROP HANDLE STATE //
     return (
       <>
         <Button variant="outline-dark" onClick={() => {handleShow(); props.depsGet(props.id)}}>Deposits</Button>

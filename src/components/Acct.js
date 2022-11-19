@@ -15,12 +15,12 @@ const Account = (props) => {
   const [trans, setTrans] = useState([])
   const [deps, setDeps] = useState([])
   const [hist, setHist] = useState([])
-  // START ACCT HANDLE STATE //
+  
+  // START crud methods //
 
   const depsGet = (id) => {
     const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/deposits"
     fetch(url, {
-      // withCredentials: true,
       credentials: "include",
       headers: {
         "Content-Type": "application/json"
@@ -37,10 +37,10 @@ const Account = (props) => {
         setDeps(data.data)
     })
   } // END DEPSGET() // 
+
   const transGet = (id) => {
       const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/transactions"
       fetch(url, {
-        // withCredentials: true,
         credentials: "include",
         headers: {
           "Content-Type": "application/json"
@@ -56,11 +56,11 @@ const Account = (props) => {
           console.log(data.data)
           setTrans(data.data)
       })
-  }
+  } // END TRANSGET() //
+
   const histGet = (id) => {
     const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/history"
       fetch(url, {
-        // withCredentials: true,
         credentials: "include",
         headers: {
           "Content-Type": "application/json"
@@ -75,10 +75,11 @@ const Account = (props) => {
       }).then(data => {
           setHist(data.data)
       })
-  }
-    
+  }// END HISTGET() //
 
-  // END PROP HANDLE STATE //
+  // need to add PUT ADD and DELETE routes for deposits and transactions here //
+
+
   return (
     <>
     <Card size="md" >
