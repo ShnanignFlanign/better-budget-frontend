@@ -42,6 +42,7 @@ function App() {
         }).then(data => {
             console.log(data.data)
             setUser(data.data)
+            acctsGet()
         })     
         
         // if (resJson.status === 200) {
@@ -100,9 +101,63 @@ function App() {
         setAccts(data.data)
     })
   }// END ACCTSGET() //
-  const depsGet = () => {}
-  const transGet = () => {}
-  const histGet = () => {}
+  const depsGet = (id) => {
+    const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/deposits"
+    fetch(url, {
+      // withCredentials: true,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => {
+        if(res.status === 200) {
+        return res.json()
+        } else {
+        return []
+        }
+    }).then(data => {
+        console.log(data.data[0])
+    })
+  }
+  const transGet = (id) => {
+      const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/transactions"
+      fetch(url, {
+        // withCredentials: true,
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => {
+          if(res.status === 200) {
+          return res.json()
+          } else {
+          return []
+          }
+      }).then(data => {
+          console.log(data.data[0])
+      })
+  }
+  const histGet = (id) => {
+    const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/history"
+      fetch(url, {
+        // withCredentials: true,
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => {
+          if(res.status === 200) {
+          return res.json()
+          } else {
+          return []
+          }
+      }).then(data => {
+          console.log("Deposits:",data.data.Deposits[0], "Transactions:", data.data.Transactions[0])
+      })
+  }
 
   const acctPost = () => {}
   const transPost = () => {}
@@ -118,11 +173,14 @@ function App() {
   
   return (
     <div className="App">
-      <Header logOut={logOut} signIn={signIn} />
-      <Button onClick={acctsGet}>Account Get</Button> 
+      <Header user={user} logOut={logOut} signIn={signIn} />
+      { (user.username) 
+      ? <h1>{user.username}'s Accounts </h1> 
+      : <h1>Welcome</h1> } 
+
       { accts.map((acct, i) => {
         return(
-        <Account key={acct.id} acct={acct}></Account>
+        <Account histGet={histGet} depsGet={depsGet} transGet={transGet} key={acct.id} acct={acct}></Account>
         )
       })}
       

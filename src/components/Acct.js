@@ -33,9 +33,9 @@ const Account = (props) => {
           <Row>
             <Col>
               <ButtonGroup className="me2">
-                <Button variant="outline-dark">History</Button>
-                <Button variant="outline-dark">Deposits</Button>
-                <Button variant="outline-dark">Transactions</Button> 
+                <Button onClick={() => {props.histGet(props.acct.id)}} variant="outline-dark" >History</Button>
+                <Button onClick={() => {props.depsGet(props.acct.id)}} variant="outline-dark">Deposits</Button>
+                <Button onClick={() => {props.transGet(props.acct.id)}} variant="outline-dark">Transactions</Button> 
               </ButtonGroup>
             </Col>
               

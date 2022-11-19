@@ -8,11 +8,14 @@ const Header = (props) => {
     return(
         <>
             <Nav>
-                <Register/>
+            { (props.user.username) 
+            ? <Button variant="primary" onClick={props.logOut}>Sign Out</Button> 
+            : <>
+                <Register/> 
                 <Signin signIn={props.signIn} />
-                <Button variant="primary" onClick={props.logOut}>
-                    Sign Out
-                </Button>
+            </> }
+                
+                
             </Nav>
             
         </>
