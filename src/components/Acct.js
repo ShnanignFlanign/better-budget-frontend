@@ -19,12 +19,12 @@ const Account = (props) => {
   return (
     <>
     <Card size="md" >
-        <Card.Title>Account Name</Card.Title>
+        <Card.Title>Account Name: {props.acct.name} </Card.Title>
         
         <Card.Body>
           <Row>
-            <Col>Balance:</Col>
-            <Col>$$$$$</Col>
+            <Col>Balance: ${props.acct.balance} </Col>
+            <Col></Col>
             
           </Row>
           

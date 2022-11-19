@@ -26,17 +26,17 @@ function App() {
         await fetch(url, {
           method: 'POST',
           body: JSON.stringify(loginBody),
-          withCredentials: true,
-          credentials: "same-origin",
+          // withCredentials: true,
+          credentials: "include",
           headers: {
-            'Content-Type': 'application/json',
-            'Connection': 'keep-alive'
+            'Content-Type': 'application/json'
           }          
         })
         .then(res => {
           if(res.status === 200) {
             return res.json()
           } else {
+            console.log('RES STATUS NOT 200')
             return []
           }
         }).then(data => {
@@ -60,15 +60,19 @@ function App() {
     try {
       const response = await fetch(url, {
         method: 'GET',
+        // withCredentials: true,
+        credentials: "include",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         }
       })
       console.log(response)
-      if (response.status === 201) {
+      if (response.status === 200) {
         console.log("Logged Out User")
         setUser({})
         setAccts([])
+      } else {
+        console.log("STATUS NOT 200")
       }
     }
     catch (err) {
@@ -79,8 +83,11 @@ function App() {
   const acctsGet = () => {
     const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/"
     fetch(url, {
-      withCredentials: true,
-      credentials: "same-origin"
+      // withCredentials: true,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
     .then(res => {
         if(res.status === 200) {
@@ -113,7 +120,12 @@ function App() {
     <div className="App">
       <Header logOut={logOut} signIn={signIn} />
       <Button onClick={acctsGet}>Account Get</Button> 
-      <Account></Account>
+      { accts.map((acct, i) => {
+        return(
+        <Account key={acct.id} acct={acct}></Account>
+        )
+      })}
+      
     </div>
   );
 }
