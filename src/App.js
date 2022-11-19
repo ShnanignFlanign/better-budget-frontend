@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from "react-bootstrap";
 import Header from './components/Header';
 import Account from './components/Acct'
 
@@ -9,8 +8,7 @@ function App() {
   // START STATE SETTERS // 
   const [user, setUser] = useState({})
   const [accts, setAccts] = useState([])
-  const [trans, setTrans] = useState([])
-  const [deps, setDeps] = useState([])
+  
   // END STATE SETTERS //
 
   const signIn = async (e) => {
@@ -101,63 +99,7 @@ function App() {
         setAccts(data.data)
     })
   }// END ACCTSGET() //
-  const depsGet = (id) => {
-    const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/deposits"
-    fetch(url, {
-      // withCredentials: true,
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(res => {
-        if(res.status === 200) {
-        return res.json()
-        } else {
-        return []
-        }
-    }).then(data => {
-        console.log(data.data[0])
-    })
-  }
-  const transGet = (id) => {
-      const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/transactions"
-      fetch(url, {
-        // withCredentials: true,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => {
-          if(res.status === 200) {
-          return res.json()
-          } else {
-          return []
-          }
-      }).then(data => {
-          console.log(data.data[0])
-      })
-  }
-  const histGet = (id) => {
-    const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/history"
-      fetch(url, {
-        // withCredentials: true,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => {
-          if(res.status === 200) {
-          return res.json()
-          } else {
-          return []
-          }
-      }).then(data => {
-          console.log("Deposits:",data.data.Deposits[0], "Transactions:", data.data.Transactions[0])
-      })
-  }
+
 
   const acctPost = () => {}
   const transPost = () => {}
@@ -180,7 +122,7 @@ function App() {
 
       { accts.map((acct, i) => {
         return(
-        <Account histGet={histGet} depsGet={depsGet} transGet={transGet} key={acct.id} acct={acct}></Account>
+        <Account key={acct.id} acct={acct}></Account>
         )
       })}
       

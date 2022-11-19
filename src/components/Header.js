@@ -9,7 +9,10 @@ const Header = (props) => {
         <>
             <Nav>
             { (props.user.username) 
-            ? <Button variant="primary" onClick={props.logOut}>Sign Out</Button> 
+            ?<>
+                <Button variant="primary" onClick={props.logOut}>Sign Out</Button> 
+                <Button>Add Account</Button>
+            </>
             : <>
                 <Register/> 
                 <Signin signIn={props.signIn} />

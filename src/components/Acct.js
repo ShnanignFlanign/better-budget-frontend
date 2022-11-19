@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Button, ButtonGroup, Row, Col, Card, ListGroup } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
+import Deposit from './Deposit';
+import Transaction from './Transaction';
+import History from './History';
+
 
 const Account = (props) => {
   // START MODAL STATE //
@@ -8,11 +12,67 @@ const Account = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   // END MODAL STATE // 
+  const [trans, setTrans] = useState([])
+  const [deps, setDeps] = useState([])
+  // START ACCT HANDLE STATE //
 
-  // START PROP HANDLE STATE //
-
-    //NEED EDIT ACCT SUBMIT HANDLER//
-    //NEED DELETE ACCT SUBMIT HANDLER// 
+  const depsGet = (id) => {
+    const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/deposits"
+    fetch(url, {
+      // withCredentials: true,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => {
+        if(res.status === 200) {
+        return res.json()
+        } else {
+        return []
+        }
+    }).then(data => {
+        console.log(data.data[0])
+    })
+  } // END DEPSGET() // 
+  const transGet = (id) => {
+      const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/transactions"
+      fetch(url, {
+        // withCredentials: true,
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => {
+          if(res.status === 200) {
+          return res.json()
+          } else {
+          return []
+          }
+      }).then(data => {
+          console.log(data.data[0])
+      })
+  }
+  const histGet = (id) => {
+    const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/history"
+      fetch(url, {
+        // withCredentials: true,
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => {
+          if(res.status === 200) {
+          return res.json()
+          } else {
+          return []
+          }
+      }).then(data => {
+          console.log("Deposits:",data.data.Deposits[0], "Transactions:", data.data.Transactions[0])
+      })
+  }
     
 
   // END PROP HANDLE STATE //
@@ -33,9 +93,9 @@ const Account = (props) => {
           <Row>
             <Col>
               <ButtonGroup className="me2">
-                <Button onClick={() => {props.histGet(props.acct.id)}} variant="outline-dark" >History</Button>
-                <Button onClick={() => {props.depsGet(props.acct.id)}} variant="outline-dark">Deposits</Button>
-                <Button onClick={() => {props.transGet(props.acct.id)}} variant="outline-dark">Transactions</Button> 
+                <History id={props.acct.id} histGet={histGet}/>
+                <Deposit id={props.acct.id} depsGet={depsGet}/>
+                <Transaction id={props.acct.id} transGet={transGet}/>
               </ButtonGroup>
             </Col>
               
