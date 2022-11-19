@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button, ButtonGroup, Row, Col } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
 const Deposit = (props) => {
     // START MODAL STATE //
+    const [fullScreen, setFullScreen] = useState(false);
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        setFullScreen(true);
+        setShow(true);
+    }
+
     // END MODAL STATE // 
   
     // START PROP HANDLE STATE //
@@ -19,7 +23,7 @@ const Deposit = (props) => {
     return (
       <>
         <Button variant="outline-dark" onClick={() => {handleShow(); props.depsGet(props.id)}}>Deposits</Button>
-          <Modal show={show} onHide={handleClose}>
+          <Modal fullscreen={fullScreen} show={show} onHide={() => setShow(false)}>
             <Modal.Header closeButton>
                 <Modal.Title>Deposits</Modal.Title>
             </Modal.Header>
@@ -27,11 +31,16 @@ const Deposit = (props) => {
                 {props.deps.map((dep, i) => {
                     return(
                     <Row key={dep.id}>
+                        <Col>Date: {dep.date}</Col>
                         <Col>Name: {dep.name}</Col>
                         <Col>Amount: ${dep.amount}</Col>
-                        <Col>Date: {dep.date}</Col>
-                        <Col><Button variant="outline-danger">Edit</Button></Col>
-                        <Col><Button variant="outline-danger">Delete</Button></Col>
+                        <Col>
+                            <ButtonGroup>
+                                <Button variant="outline-danger">Edit</Button>
+                                <Button variant="outline-danger">Delete</Button>
+                            </ButtonGroup>
+                        </Col>
+
                     </Row>
                     )
                 })}

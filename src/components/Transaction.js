@@ -4,9 +4,12 @@ import Modal from 'react-bootstrap/Modal';
 
 const Transaction = (props) => {
     // START MODAL STATE //
+    const [fullScreen, setFullScreen] = useState(false);
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        setFullScreen(true);
+        setShow(true);
+    }
     // END MODAL STATE // 
   
     // START PROP HANDLE STATE //
@@ -19,7 +22,7 @@ const Transaction = (props) => {
     return (
       <>
         <Button variant="outline-dark" onClick={() => {handleShow(); props.transGet(props.id)}}>Transactions</Button>
-          <Modal show={show} onHide={handleClose}>
+          <Modal show={show} fullscreen={fullScreen} onHide={() => setShow(false)}>
             <Modal.Header closeButton>
                 <Modal.Title>Transactions</Modal.Title>
             </Modal.Header>
@@ -27,13 +30,17 @@ const Transaction = (props) => {
                 {props.trans.map((tran, i) => {
                     return(
                     <Row key={tran.id}>
+                        <Col>Date: {tran.date}</Col>
                         <Col>Name: {tran.name}</Col>
                         <Col>Amount: ${tran.amount} </Col>
                         <Col>Category: {tran.category}</Col>
-                        <Col>Date: {tran.date}</Col>
                         <Col>Description: {tran.description}</Col>
-                        <Col><Button variant="outline-danger">Edit Form</Button></Col>
-                        <Col><Button variant="outline-danger">Delete Form</Button></Col>
+                        <Col>
+                            <ButtonGroup>
+                                <Button variant="outline-danger">Edit</Button>
+                                <Button variant="outline-danger">Delete</Button>
+                            </ButtonGroup>
+                        </Col>
                     </Row>
                     )
                 })}
