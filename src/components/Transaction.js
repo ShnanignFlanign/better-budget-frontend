@@ -24,15 +24,20 @@ const Transaction = (props) => {
                 <Modal.Title>Transactions</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Row>
-                    <Col>Name: """""</Col>
-                    <Col>Amount: $$$ </Col>
-                    <Col>Category: """"</Col>
-                    <Col>Date: 2/2/2</Col>
-                    <Col>Description: """"</Col>
-                    <Col><Button variant="outline-danger">Edit Form</Button></Col>
-                    <Col><Button variant="outline-danger">Delete Form</Button></Col>
-                </Row>
+                {props.trans.map((tran, i) => {
+                    return(
+                    <Row key={tran.id}>
+                        <Col>Name: {tran.name}</Col>
+                        <Col>Amount: ${tran.amount} </Col>
+                        <Col>Category: {tran.category}</Col>
+                        <Col>Date: {tran.date}</Col>
+                        <Col>Description: {tran.description}</Col>
+                        <Col><Button variant="outline-danger">Edit Form</Button></Col>
+                        <Col><Button variant="outline-danger">Delete Form</Button></Col>
+                    </Row>
+                    )
+                })}
+                
             </Modal.Body>
             <Modal.Footer>
                 <ButtonGroup>

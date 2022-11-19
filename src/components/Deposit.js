@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Row, Col, Card, ListGroup } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
 const Deposit = (props) => {
@@ -24,13 +24,18 @@ const Deposit = (props) => {
                 <Modal.Title>Deposits</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Row>
-                    <Col>Name: """""</Col>
-                    <Col>Amount: $$$ </Col>
-                    <Col>Date: 2/2/2</Col>
-                    <Col><Button variant="outline-danger">Edit Form</Button></Col>
-                    <Col><Button variant="outline-danger">Delete Form</Button></Col>
-                </Row>
+                {props.deps.map((dep, i) => {
+                    return(
+                    <Row key={dep.id}>
+                        <Col>Name: {dep.name}</Col>
+                        <Col>Amount: ${dep.amount}</Col>
+                        <Col>Date: {dep.date}</Col>
+                        <Col><Button variant="outline-danger">Edit</Button></Col>
+                        <Col><Button variant="outline-danger">Delete</Button></Col>
+                    </Row>
+                    )
+                })}
+                
             </Modal.Body>
             <Modal.Footer>
                 <Button>Add Deposit</Button>

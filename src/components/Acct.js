@@ -14,6 +14,7 @@ const Account = (props) => {
   // END MODAL STATE // 
   const [trans, setTrans] = useState([])
   const [deps, setDeps] = useState([])
+  const [hist, setHist] = useState([])
   // START ACCT HANDLE STATE //
 
   const depsGet = (id) => {
@@ -32,7 +33,8 @@ const Account = (props) => {
         return []
         }
     }).then(data => {
-        console.log(data.data[0])
+        console.log(data.data)
+        setDeps(data.data)
     })
   } // END DEPSGET() // 
   const transGet = (id) => {
@@ -51,7 +53,8 @@ const Account = (props) => {
           return []
           }
       }).then(data => {
-          console.log(data.data[0])
+          console.log(data.data)
+          setTrans(data.data)
       })
   }
   const histGet = (id) => {
@@ -70,7 +73,7 @@ const Account = (props) => {
           return []
           }
       }).then(data => {
-          console.log("Deposits:",data.data.Deposits[0], "Transactions:", data.data.Transactions[0])
+          setHist(data.data)
       })
   }
     
@@ -93,9 +96,9 @@ const Account = (props) => {
           <Row>
             <Col>
               <ButtonGroup className="me2">
-                <History id={props.acct.id} histGet={histGet}/>
-                <Deposit id={props.acct.id} depsGet={depsGet}/>
-                <Transaction id={props.acct.id} transGet={transGet}/>
+                <History id={props.acct.id} hist={hist} histGet={histGet}/>
+                <Deposit id={props.acct.id} deps={deps} depsGet={depsGet}/>
+                <Transaction id={props.acct.id} trans={trans} transGet={transGet}/>
               </ButtonGroup>
             </Col>
               
