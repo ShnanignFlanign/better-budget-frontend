@@ -77,6 +77,15 @@ const Account = (props) => {
       })
   }// END HISTGET() //
 
+  const transPost = () => {}
+  const depPost = () => {}
+
+  const transPut = () => {}
+  const depPut = () => {}
+
+  const transDel = () => {}
+  const depDel = () => {}
+
   // need to add PUT ADD and DELETE routes for deposits and transactions here //
 
 

@@ -96,16 +96,13 @@ function App() {
 
 
   const acctPost = () => {}
-  const transPost = () => {}
-  const depPost = () => {}
+  
 
   const acctPut = () => {}
-  const transPut = () => {}
-  const depPut = () => {}
+
 
   const acctDel = () => {}
-  const transDel = () => {}
-  const depDel = () => {}
+
   
   return (
     <div className="App">
