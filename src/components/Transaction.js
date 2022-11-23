@@ -19,6 +19,8 @@ const Transaction = (props) => {
                 <Modal.Title>Transactions</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                {(props.trans.length > 0)
+                ? <> 
                 {props.trans.map((tran, i) => {
                     return(
                     <Row key={tran.id}>
@@ -36,6 +38,12 @@ const Transaction = (props) => {
                     </Row>
                     )
                 })}
+                </>
+                : <>
+                <h1>No Account Withdrawals</h1>
+                </>
+                }
+                
                 
             </Modal.Body>
             <Modal.Footer>

@@ -16,15 +16,27 @@ const History = (props) => {
         <Button variant="outline-dark" onClick={() => {handleShow(); props.histGet(props.id)}}>History</Button>
         <Modal fullscreen={fullScreen} show={show} onHide={() => setShow(false)}>
             <Modal.Header closeButton>
-                <Modal.Title>History</Modal.Title>
+                <Modal.Title>Account History</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Row>
-                    <Col>Date: 2/2/2</Col>
-                    <Col>Type: dep/trans</Col>
-                    <Col>Name: """"</Col>
-                    <Col>Amount: $$$ </Col>
-                </Row>
+                {(props.hist.length > 0)
+                ? <>
+                {props.hist.map((hist, i) => {
+                    return(
+                    <Row key={i}>
+                        <Col>{hist.type}</Col>
+                        <Col>Date: {hist.date}</Col>
+                        <Col>Name: {hist.name}</Col>
+                        <Col>Amount: ${hist.amount}</Col>
+                    </Row>
+                    )
+                })}
+                </> 
+                : <>
+                <h1>Account History Will Appear Here</h1>
+                </>
+                }
+            
             </Modal.Body>
           </Modal>
       </>

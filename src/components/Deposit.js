@@ -19,6 +19,8 @@ const Deposit = (props) => {
                 <Modal.Title>Deposits</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                {(props.deps.length > 0) 
+                ? <>
                 {props.deps.map((dep, i) => {
                     return(
                     <Row key={dep.id}>
@@ -35,6 +37,12 @@ const Deposit = (props) => {
                     </Row>
                     )
                 })}
+                </>
+                : <>
+                <h1>No Deposits On This Account</h1>
+                </>
+            }
+                
                 
             </Modal.Body>
             <Modal.Footer>

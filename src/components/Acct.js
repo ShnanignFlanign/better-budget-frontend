@@ -73,7 +73,8 @@ const Account = (props) => {
           return []
           }
       }).then(data => {
-          setHist(data.data)
+        console.log(data.data.History)
+          setHist(data.data.History)
       })
   }// END HISTGET() //
 
