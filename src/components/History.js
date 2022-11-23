@@ -24,10 +24,20 @@ const History = (props) => {
                 {props.hist.map((hist, i) => {
                     return(
                     <Row key={i}>
-                        <Col>{hist.type}</Col>
-                        <Col>Date: {hist.date}</Col>
-                        <Col>Name: {hist.name}</Col>
-                        <Col>Amount: ${hist.amount}</Col>
+                        
+                        {(hist.type === "deposit")
+                        ?<>
+                            <Col>{hist.type.toUpperCase()}</Col>
+                            <Col>Date: {hist.date}</Col>
+                            <Col>Name: {hist.name}</Col>
+                            <Col>Amount: ${hist.amount}</Col>
+                            </>
+                        :<>
+                            <Col>WITHDRAWAL</Col>
+                            <Col>Date: {hist.date}</Col>
+                            <Col>Name: {hist.name}</Col>
+                            <Col>Amount: -${hist.amount}</Col></>}
+                        
                     </Row>
                     )
                 })}

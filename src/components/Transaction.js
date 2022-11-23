@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, ButtonGroup, Row, Col } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
+import AddTrans from './AddTrans';
 
 const Transaction = (props) => {
     // START MODAL STATE //
@@ -48,7 +49,7 @@ const Transaction = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <ButtonGroup>
-                    <Button>Add Transaction</Button>
+                    <AddTrans id={props.id} transPost={props.transPost}/>
                 </ButtonGroup>
             </Modal.Footer>
           </Modal>

@@ -78,8 +78,75 @@ const Account = (props) => {
       })
   }// END HISTGET() //
 
-  const transPost = () => {}
-  const depPost = () => {}
+  const transPost = async(e, id) => {
+      e.preventDefault()
+      console.log('Transaction Post')
+        console.log(e.target.name.value, e.target.amount.value)
+        const url = process.env.REACT_APP_BACKEND_URL + '/portal/accounts/' + id + '/transactions'
+        const newTransBody = {
+          name: e.target.name.value,
+          amount: e.target.amount.value,
+          category: e.target.category.value,
+          description: e.target.description.value
+        }
+        try {
+          await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(newTransBody),
+            credentials: "include",
+            headers: {
+              'Content-Type': 'application/json'
+            }          
+          })
+          .then(res => {
+            if(res.status === 201) {
+              return res.json()
+            } else {
+              console.log('RES STATUS NOT 200')
+              return []
+            }
+          }).then(data => {
+              console.log(data.data)
+          })     
+        }
+        catch (err) {
+          console.log('Error => ', err);
+        }
+  }
+
+  const depPost = async (e, id) => {
+    e.preventDefault()
+    console.log('Deposit Post')
+      console.log(e.target.name.value, e.target.amount.value)
+      const url = process.env.REACT_APP_BACKEND_URL + '/portal/accounts/' + id + '/deposits'
+      const newDepBody = {
+        name: e.target.name.value,
+        amount: e.target.amount.value
+      }
+      try {
+        await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(newDepBody),
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json'
+          }          
+        })
+        .then(res => {
+          if(res.status === 201) {
+            return res.json()
+          } else {
+            console.log('RES STATUS NOT 200')
+            return []
+          }
+        }).then(data => {
+            console.log(data.data)
+        })     
+      }
+      catch (err) {
+        console.log('Error => ', err);
+      }
+  }
 
   const transPut = () => {}
   const depPut = () => {}
@@ -108,8 +175,8 @@ const Account = (props) => {
             <Col>
               <ButtonGroup className="me2">
                 <History id={props.acct.id} hist={hist} histGet={histGet}/>
-                <Deposit id={props.acct.id} deps={deps} depsGet={depsGet}/>
-                <Transaction id={props.acct.id} trans={trans} transGet={transGet}/>
+                <Deposit id={props.acct.id} deps={deps} depPost={depPost} depsGet={depsGet}/>
+                <Transaction id={props.acct.id} trans={trans} transPost={transPost} transGet={transGet}/>
               </ButtonGroup>
             </Col>
               

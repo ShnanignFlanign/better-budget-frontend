@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, ButtonGroup, Row, Col } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
+import AddDep from './AddDep'
 
 const Deposit = (props) => {
     // START MODAL STATE //
@@ -46,7 +47,7 @@ const Deposit = (props) => {
                 
             </Modal.Body>
             <Modal.Footer>
-                <Button>Add Deposit</Button>
+                <AddDep id={props.id} depPost={props.depPost} >Add Deposit</AddDep>
             </Modal.Footer>
           </Modal>
       </>
