@@ -95,18 +95,49 @@ function App() {
   }// END ACCTSGET() //
 
 
-  const acctPost = () => {}
+  const acctPost = async (e) => {
+    e.preventDefault()
+    console.log('Acct Post')
+      console.log(e.target.name.value, e.target.balance.value)
+      const url = process.env.REACT_APP_BACKEND_URL + '/portal/accounts/'
+      const newAcctBody = {
+        name: e.target.name.value,
+        balance: e.target.balance.value
+      }
+      try {
+        await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(newAcctBody),
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json'
+          }          
+        })
+        .then(res => {
+          if(res.status === 201) {
+            return res.json()
+          } else {
+            console.log('RES STATUS NOT 200')
+            return []
+          }
+        }).then(data => {
+            console.log(data.data)
+            acctsGet()
+        })     
+      }
+      catch (err) {
+        console.log('Error => ', err);
+      }
+  }
   
-
   const acctPut = () => {}
-
 
   const acctDel = () => {}
 
   
   return (
     <div className="App">
-      <Header user={user} logOut={logOut} signIn={signIn} />
+      <Header acctPost={acctPost} user={user} logOut={logOut} signIn={signIn} />
       { (user.username) 
       ? <h1>{user.username}'s Accounts </h1> 
       : <h1>Welcome</h1> } 

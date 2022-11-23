@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Nav,Button,Navbar,Container,Image} from "react-bootstrap";
 import Register from './Register';
 import Signin from './Signin';
+import AddAcct from './AddAcct';
 
 const Header = (props) => {
 
@@ -11,7 +12,7 @@ const Header = (props) => {
             { (props.user.username) 
             ?<>
                 <Button variant="primary" onClick={props.logOut}>Sign Out</Button> 
-                <Button>Add Account</Button>
+                <AddAcct acctPost={props.acctPost}> </AddAcct>
             </>
             : <>
                 <Register/> 
