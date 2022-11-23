@@ -107,6 +107,7 @@ const Account = (props) => {
             }
           }).then(data => {
               console.log(data.data)
+              // props.acctsGet()
           })     
         }
         catch (err) {
@@ -141,6 +142,7 @@ const Account = (props) => {
           }
         }).then(data => {
             console.log(data.data)
+            // props.acctsGet()
         })     
       }
       catch (err) {
@@ -148,7 +150,47 @@ const Account = (props) => {
       }
   }
 
-  const transPut = () => {}
+  const transPut = async(e, aid, id) => {
+    e.preventDefault()
+      console.log('Transaction Put')
+        console.log(e.target.name.value, e.target.amount.value)
+        const url = process.env.REACT_APP_BACKEND_URL + '/portal/accounts/' + aid + '/transactions/' + id
+        const editedTransBody = {
+          name: (e.target.name.value)
+            ? e.target.name.value : e.target.name.placeholder,
+          amount: (e.target.amount.value)
+            ? e.target.amount.value : e.target.amount.placeholder,
+          category: (e.target.category.value)
+            ? e.target.category.value : e.target.category.placeholder,
+          description: (e.target.description.value)
+            ? e.target.description.value : e.target.description.placeholder
+        }
+        console.log(editedTransBody)
+        try {
+          await fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(editedTransBody),
+            credentials: "include",
+            headers: {
+              'Content-Type': 'application/json'
+            }          
+          })
+          .then(res => {
+            if(res.status === 200) {
+              return res.json()
+            } else {
+              console.log('RES STATUS NOT 200')
+              return []
+            }
+          }).then(data => {
+              console.log(data.data)
+              // props.acctsGet()
+          })     
+        }
+        catch (err) {
+          console.log('Error => ', err);
+        }
+  }
   const depPut = () => {}
 
   const transDel = () => {}
@@ -176,7 +218,7 @@ const Account = (props) => {
               <ButtonGroup className="me2">
                 <History id={props.acct.id} hist={hist} histGet={histGet}/>
                 <Deposit id={props.acct.id} deps={deps} depPost={depPost} depsGet={depsGet}/>
-                <Transaction id={props.acct.id} trans={trans} transPost={transPost} transGet={transGet}/>
+                <Transaction id={props.acct.id} trans={trans} transPost={transPost} transPut={transPut} transGet={transGet}/>
               </ButtonGroup>
             </Col>
               

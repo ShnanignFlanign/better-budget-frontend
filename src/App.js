@@ -144,7 +144,7 @@ function App() {
 
       { accts.map((acct, i) => {
         return(
-        <Account key={acct.id} acct={acct}></Account>
+        <Account acctsGet={acctsGet} key={acct.id} acct={acct}></Account>
         )
       })}
       {/* Put logged in view vs logged out view in one terinary operator. No need for user portal component or AcctItem component. Welcome Component can just show example accounts */}

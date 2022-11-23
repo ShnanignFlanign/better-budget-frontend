@@ -22,7 +22,9 @@ const AddTrans = (props) => {
         props.transPost(e, props.id)
         setForm({
           name: '',
-          amount: ''
+          amount: '',
+          category: '',
+          description: ''
         })
         handleClose()
     }
@@ -44,7 +46,7 @@ const AddTrans = (props) => {
                 <input type="amount" id="amount" name="amount" onChange={handleChange}/>
                 <label htmlFor="category">Category: </label>
                 <Form.Select htmlFor='category' id="category" name="category" onChange={handleChange}>
-                <option>Food</option>
+                    <option>Food</option>
                     <option>Apparel</option>
                     <option>Bill - Utilities</option>
                     <option>Bill - Entertainment</option>
