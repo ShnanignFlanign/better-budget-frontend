@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 
 const Signin = (props) => {
   // START MODAL STATE //
@@ -38,13 +39,18 @@ const Signin = (props) => {
           <Modal.Title>Sign In</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Email: </label>
-                <input type="text" id="email" name="email" onChange={handleChange}/>
-                <label htmlFor="password">Password: </label>
-                <input type="password" id="password" name="password" onChange={handleChange}/>
-                <input type="submit" value="Sign In" />
-            </form>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label htmlFor="email">Email: </Form.Label>
+                <Form.Control type="text" id="email" name="email" placeholder="Enter Email" onChange={handleChange}/>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="password">Password: </Form.Label>
+                <Form.Control type="password" id="password" name="password" onChange={handleChange}/>
+              </Form.Group>
+                
+                <Button variant="primary" type="submit">Sign In</Button>
+            </Form>
         </Modal.Body>
       </Modal>
     </>

@@ -39,24 +39,32 @@ const EditTrans = (props) => {
           <Modal.Title>Edit Transaction</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name: </label>
-                <input type="text" id="name" name="name" onChange={handleChange} placeholder={props.tran.name} />
-                <label htmlFor="amount">Amount: </label>
-                <input type="amount" id="amount" name="amount" onChange={handleChange} placeholder={props.tran.amount} />
-                <label htmlFor="category">Category: </label>
-                <Form.Select htmlFor='category' id="category" name="category" placeholder={props.tran.category} onChange={handleChange}>
-                    <option>Food</option>
-                    <option>Apparel</option>
-                    <option>Bill - Utilities</option>
-                    <option>Bill - Entertainment</option>
-                    <option>Emergency</option>
-                    <option>Other</option>
-                </Form.Select>
-                <label htmlFor="description">Description: </label >
-                <textarea type="text" id="description" name="description" placeholder={props.tran.description} onChange={handleChange}></textarea>
-                <input type="submit" value="Confirm" />
-            </form>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group>
+            <Form.Label htmlFor="name">Name: </Form.Label>
+            <Form.Control type="text" id="name" name="name" onChange={handleChange} placeholder={props.tran.name}/>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="amount">Amount: </Form.Label>
+            <Form.Control type="amount" id="amount" name="amount" onChange={handleChange} placeholder={props.tran.amount}/>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="category">Category: </Form.Label>
+            <Form.Select htmlFor='category' id="category" name="category" placeholder={props.tran.category} onChange={handleChange}>
+                  <option>Food</option>
+                  <option>Apparel</option>
+                  <option>Bill - Utilities</option>
+                  <option>Bill - Entertainment</option>
+                  <option>Emergency</option>
+                  <option>Other</option>
+            </Form.Select>
+          </Form.Group>
+          <Form.Group>
+              <Form.Label htmlFor="description">Description: </Form.Label>
+              <Form.Control as="textarea" type="text" id="description" name="description" placeholder={props.tran.description} onChange={handleChange}/>
+          </Form.Group>
+            <Button variant="primary" type="submit">Confirm</Button>
+          </Form>
         </Modal.Body>
       </Modal>
     </>

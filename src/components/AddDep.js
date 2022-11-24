@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form'
 
 const AddDep = (props) => {
     // START MODAL STATE //
@@ -36,13 +37,17 @@ const AddDep = (props) => {
           <Modal.Title>New Deposit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name: </label>
-                <input type="text" id="name" name="name" onChange={handleChange}/>
-                <label htmlFor="amount">Amount: </label>
-                <input type="amount" id="amount" name="amount" onChange={handleChange}/>
-                <input type="submit" value="Confirm" />
-            </form>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label htmlFor="name">Name: </Form.Label>
+                <Form.Control type="text" id="name" name="name" onChange={handleChange}/>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="amount">Amount: </Form.Label>
+                <Form.Control type="amount" id="amount" name="amount" onChange={handleChange}/>
+              </Form.Group>
+              <Button variant="primary" type="submit">Confirm</Button>
+            </Form>
         </Modal.Body>
       </Modal>
     </>

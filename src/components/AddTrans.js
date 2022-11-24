@@ -39,12 +39,17 @@ const AddTrans = (props) => {
           <Modal.Title>New Transaction</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name: </label>
-                <input type="text" id="name" name="name" onChange={handleChange}/>
-                <label htmlFor="amount">Amount: </label>
-                <input type="amount" id="amount" name="amount" onChange={handleChange}/>
-                <label htmlFor="category">Category: </label>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label htmlFor="name">Name: </Form.Label>
+                <Form.Control type="text" id="name" name="name" onChange={handleChange}/>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="amount">Amount: </Form.Label>
+                <Form.Control type="amount" id="amount" name="amount" onChange={handleChange}/>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="category">Category: </Form.Label>
                 <Form.Select htmlFor='category' id="category" name="category" onChange={handleChange}>
                     <option>Food</option>
                     <option>Apparel</option>
@@ -53,10 +58,13 @@ const AddTrans = (props) => {
                     <option>Emergency</option>
                     <option>Other</option>
                 </Form.Select>
-                <label htmlFor="description">Description: </label>
-                <textarea type="description" id="description" name="description"></textarea>
-                <input type="submit" value="Confirm" />
-            </form>
+              </Form.Group>
+                <Form.Group>
+                  <Form.Label htmlFor="description">Description: </Form.Label>
+                  <Form.Control as="textarea" type="description" id="description" name="description"/>
+                </Form.Group>
+                <Button variant="primary" type="submit">Confirm</Button>
+            </Form>
         </Modal.Body>
       </Modal>
     </>

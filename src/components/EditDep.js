@@ -37,13 +37,17 @@ const EditDep = (props) => {
           <Modal.Title>Edit Deposit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name: </label>
-                <input type="text" id="name" name="name" onChange={handleChange} placeholder={props.dep.name} />
-                <label htmlFor="amount">Amount: </label>
-                <input type="amount" id="amount" name="amount" onChange={handleChange} placeholder={props.dep.amount} />
-                <input type="submit" value="Confirm" />
-            </form>
+        <Form onSubmit={handleSubmit}>
+            <Form.Group>
+                <Form.Label htmlFor="name">Name: </Form.Label>
+                <Form.Control type="text" id="name" name="name" onChange={handleChange} placeholder={props.dep.name} />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label htmlFor="amount">Amount: </Form.Label>
+                <Form.Control type="amount" id="amount" name="amount" onChange={handleChange} placeholder={props.dep.amount} />
+            </Form.Group>
+            <Button variant="primary" type="submit">Confirm</Button>
+            </Form>
         </Modal.Body>
       </Modal>
     </>

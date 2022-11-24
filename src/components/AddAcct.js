@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form'
 
 const AddAcct = (props) => {
     // START MODAL STATE //
@@ -36,18 +37,21 @@ const AddAcct = (props) => {
           <Modal.Title>New Account</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Account Name: </label>
-                <input type="text" id="name" name="name" onChange={handleChange}/>
-                <label htmlFor="balance">Balance: </label>
-                <input type="balance" id="balance" name="balance" onChange={handleChange}/>
-                <input type="submit" value="Add Account" />
-            </form>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label htmlFor="name">Account Name: </Form.Label>
+                <Form.Control type="text" id="name" name="name" onChange={handleChange}/>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="balance">Balance: </Form.Label>
+                <Form.Control type="balance" id="balance" name="balance" onChange={handleChange}/>
+              </Form.Group>
+              <Button variant="primary" type="submit">Confirm</Button>
+            </Form>
         </Modal.Body>
       </Modal>
     </>
     )
-
 }
 
 export default AddAcct
