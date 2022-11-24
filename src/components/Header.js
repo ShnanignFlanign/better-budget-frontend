@@ -1,5 +1,5 @@
 import React, {useState} from 'react'; 
-import {Nav,Button,Navbar,Container,Image} from "react-bootstrap";
+import {Nav,Button} from "react-bootstrap";
 import Register from './Register';
 import Signin from './Signin';
 import AddAcct from './AddAcct';

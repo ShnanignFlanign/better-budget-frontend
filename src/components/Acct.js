@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Deposit from './Deposit';
 import Transaction from './Transaction';
 import History from './History';
+import EditAcct from './EditAcct';
 
 
 const Account = (props) => {
@@ -264,7 +265,7 @@ const Account = (props) => {
               
             <Col>
               <ButtonGroup>
-                <Button variant="outline-danger" onClick={handleShow}>Edit</Button>
+                <EditAcct acct={props.acct} id={props.acct.id} acctPut={props.acctPut} />
                 <Button variant="outline-danger">Delete</Button>
               </ButtonGroup>
             </Col>

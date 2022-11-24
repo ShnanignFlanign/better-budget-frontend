@@ -130,7 +130,43 @@ function App() {
       }
   }
   
-  const acctPut = () => {}
+  const acctPut = async(e, id) => {
+    e.preventDefault()
+      console.log('Account Put')
+        console.log(e.target.name.value, e.target.balance.value)
+        const url = process.env.REACT_APP_BACKEND_URL + '/portal/accounts/' + id
+        const editedAcctBody = {
+          name: (e.target.name.value)
+            ? e.target.name.value : e.target.name.placeholder,
+          balance: (e.target.balance.value)
+            ? e.target.balance.value : e.target.balance.placeholder
+        }
+        console.log(editedAcctBody)
+        try {
+          await fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(editedAcctBody),
+            credentials: "include",
+            headers: {
+              'Content-Type': 'application/json'
+            }          
+          })
+          .then(res => {
+            if(res.status === 200) {
+              return res.json()
+            } else {
+              console.log('RES STATUS NOT 200')
+              return []
+            }
+          }).then(data => {
+              console.log(data.data)
+              acctsGet()
+          })     
+        }
+        catch (err) {
+          console.log('Error => ', err);
+        }    
+  }
 
   const acctDel = () => {}
 
@@ -144,7 +180,7 @@ function App() {
 
       { accts.map((acct, i) => {
         return(
-        <Account acctsGet={acctsGet} key={acct.id} acct={acct}></Account>
+        <Account acctsGet={acctsGet} key={acct.id} acct={acct} acctPut={acctPut}></Account>
         )
       })}
       {/* Put logged in view vs logged out view in one terinary operator. No need for user portal component or AcctItem component. Welcome Component can just show example accounts */}

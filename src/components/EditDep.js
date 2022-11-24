@@ -44,7 +44,7 @@ const EditDep = (props) => {
             </Form.Group>
             <Form.Group>
                 <Form.Label htmlFor="amount">Amount: </Form.Label>
-                <Form.Control type="amount" id="amount" name="amount" onChange={handleChange} placeholder={props.dep.amount} />
+                <Form.Control type="text" id="amount" name="amount" onChange={handleChange} placeholder={props.dep.amount} />
             </Form.Group>
             <Button variant="primary" type="submit">Confirm</Button>
             </Form>
