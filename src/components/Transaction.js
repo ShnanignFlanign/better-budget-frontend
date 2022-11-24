@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Row, Col } from 'react-bootstrap';
+import { Button, ButtonGroup, Row, Col, Table } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import AddTrans from './AddTrans';
 import EditTrans from './EditTrans';
@@ -23,23 +23,37 @@ const Transaction = (props) => {
             <Modal.Body>
                 {(props.trans.length > 0)
                 ? <> 
-                {props.trans.map((tran, i) => {
+                <Table striped bordered hover responsive="md" size="sm">
+                    <thead>
+                    <tr>
+                        <th>Date:</th>
+                        <th>Name:</th>
+                        <th>Amount:</th>
+                        <th>Category:</th>
+                        <th>Description:</th>
+                        <th>Options:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                {props.trans.slice(0).reverse().map((tran, i) => {
                     return(
-                    <Row key={tran.id}>
-                        <Col>Date: {tran.date}</Col>
-                        <Col>Name: {tran.name}</Col>
-                        <Col>Amount: ${tran.amount} </Col>
-                        <Col>Category: {tran.category}</Col>
-                        <Col>Description: {tran.description}</Col>
-                        <Col>
+                    <tr key={tran.id}>
+                        <td>{tran.date}</td>
+                        <td>{tran.name}</td>
+                        <td>${tran.amount} </td>
+                        <td>{tran.category}</td>
+                        <td>{tran.description}</td>
+                        <td>
                             <ButtonGroup>
                                 <EditTrans tran={tran} id={tran.id} aid={props.id} transPut={props.transPut}></EditTrans>
                                 <Button variant="outline-danger">Delete</Button>
                             </ButtonGroup>
-                        </Col>
-                    </Row>
+                        </td>
+                    </tr>
                     )
                 })}
+                    </tbody>
+                </Table>
                 </>
                 : <>
                 <h1>No Account Withdrawals</h1>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Row, Col } from 'react-bootstrap';
+import { Button, ButtonGroup, Row, Col, Table } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import AddDep from './AddDep'
 
@@ -22,22 +22,33 @@ const Deposit = (props) => {
             <Modal.Body>
                 {(props.deps.length > 0) 
                 ? <>
-                {props.deps.map((dep, i) => {
+                <Table striped bordered hover responsive="md" size="sm">
+                    <thead>
+                    <tr>
+                        <th>Date:</th>
+                        <th>Name:</th>
+                        <th>Amount:</th>
+                        <th>Options:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                {props.deps.slice(0).reverse().map((dep, i) => {
                     return(
-                    <Row key={dep.id}>
-                        <Col>Date: {dep.date}</Col>
-                        <Col>Name: {dep.name}</Col>
-                        <Col>Amount: ${dep.amount}</Col>
-                        <Col>
+                    <tr key={dep.id}>
+                        <td>{dep.date}</td>
+                        <td>{dep.name}</td>
+                        <td>${dep.amount}</td>
+                        <td>
                             <ButtonGroup>
                                 <Button variant="outline-danger">Edit</Button>
                                 <Button variant="outline-danger">Delete</Button>
                             </ButtonGroup>
-                        </Col>
-
-                    </Row>
+                        </td>
+                    </tr>
                     )
                 })}
+                    </tbody>
+                </Table>
                 </>
                 : <>
                 <h1>No Deposits On This Account</h1>
