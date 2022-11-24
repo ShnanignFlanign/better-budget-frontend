@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Row, Col, Table } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
+import { Button, ButtonGroup, Table, Modal } from 'react-bootstrap';
 import AddDep from './AddDep'
 import EditDep from './EditDep';
 

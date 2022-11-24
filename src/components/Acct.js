@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Row, Col, Card, ListGroup } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
+import { Button, ButtonGroup, Row, Col, Card } from 'react-bootstrap';
 import Deposit from './Deposit';
 import Transaction from './Transaction';
 import History from './History';

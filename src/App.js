@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
-import Account from './components/Acct'
+import Account from './components/Acct';
 import AddAcct from './components/AddAcct';
+import Welcome from './components/Welcome';
 
 
 function App() {
@@ -219,7 +220,7 @@ function App() {
         )
       })}
       </>
-      : <h1>Welcome</h1> } 
+      : <Welcome></Welcome> } 
       
       {/* Put logged in view vs logged out view in one terinary operator. No need for user portal component or AcctItem component. Welcome Component can just show example accounts */}
       

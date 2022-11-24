@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Row, Col, Table } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
 const History = (props) => {
