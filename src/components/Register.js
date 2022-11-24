@@ -31,8 +31,8 @@ const Register = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Register
+      <Button variant="outline-primary" onClick={handleShow}>
+        Sign Up
       </Button>
 
       <Modal show={show} onHide={handleClose}>

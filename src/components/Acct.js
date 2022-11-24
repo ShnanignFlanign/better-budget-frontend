@@ -7,6 +7,7 @@ import History from './History';
 import EditAcct from './EditAcct';
 
 
+
 const Account = (props) => {
   // START MODAL STATE //
   const [show, setShow] = useState(false);
@@ -271,22 +272,6 @@ const Account = (props) => {
             </Col>
           </Row>
         </Card.Footer>
-
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-            <Modal.Title>Future Edit Form</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <ListGroup variant="flush">
-                    <ListGroup.Item>Form Here</ListGroup.Item>
-                    <ListGroup.Item>For Editing Account Info</ListGroup.Item>
-                </ListGroup>
-
-            </Modal.Body>
-            <Modal.Footer>
-              
-            </Modal.Footer>
-        </Modal>
       </Card>
     </>
   );

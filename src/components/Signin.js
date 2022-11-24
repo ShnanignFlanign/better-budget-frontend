@@ -30,7 +30,7 @@ const Signin = (props) => {
   // END USER LOGIN STATE //
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="outline-primary" onClick={handleShow}>
         Sign In
       </Button>
 

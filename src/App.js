@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import Account from './components/Acct'
+import AddAcct from './components/AddAcct';
 
 
 function App() {
@@ -47,7 +48,42 @@ function App() {
       }
   }// END sign in // 
 
-  const userReg = () => {}
+  const userReg = async (e) => {
+    e.preventDefault()
+    console.log('loginUser')
+      console.log(e.target.email.value)
+      const url = process.env.REACT_APP_BACKEND_URL + '/user/signup'
+      const regBody = {
+        username: e.target.username.value,
+        email: e.target.email.value,
+        password: e.target.password.value
+      }
+      try {
+        await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(regBody),
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json'
+          }          
+        })
+        .then(res => {
+          if(res.status === 200) {
+            return res.json()
+          } else {
+            console.log('RES STATUS NOT 200')
+            return []
+          }
+        }).then(data => {
+            console.log(data.data)
+            setUser(data.data)
+            acctsGet()
+        })     
+      }
+      catch (err) {
+        console.log('Error => ', err);
+      }
+  }
 
   const logOut = async (e) => {
     e.preventDefault()
@@ -173,16 +209,18 @@ function App() {
   
   return (
     <div className="App">
-      <Header acctPost={acctPost} user={user} logOut={logOut} signIn={signIn} />
+      <Header user={user} logOut={logOut} userReg={userReg} signIn={signIn} />
       { (user.username) 
-      ? <h1>{user.username}'s Accounts </h1> 
-      : <h1>Welcome</h1> } 
-
+      ?<> <h1>{user.username}'s Accounts </h1> 
+      <AddAcct acctPost={acctPost}/>
       { accts.map((acct, i) => {
         return(
         <Account acctsGet={acctsGet} key={acct.id} acct={acct} acctPut={acctPut}></Account>
         )
       })}
+      </>
+      : <h1>Welcome</h1> } 
+      
       {/* Put logged in view vs logged out view in one terinary operator. No need for user portal component or AcctItem component. Welcome Component can just show example accounts */}
       
     </div>
