@@ -107,7 +107,8 @@ const Account = (props) => {
             }
           }).then(data => {
               console.log(data.data)
-              // props.acctsGet()
+              props.acctsGet()
+              transGet(id)
           })     
         }
         catch (err) {
@@ -142,7 +143,8 @@ const Account = (props) => {
           }
         }).then(data => {
             console.log(data.data)
-            // props.acctsGet()
+            props.acctsGet()
+            depsGet(id)
         })     
       }
       catch (err) {
@@ -184,14 +186,52 @@ const Account = (props) => {
             }
           }).then(data => {
               console.log(data.data)
-              // props.acctsGet()
+              props.acctsGet()
+              transGet(aid)
           })     
         }
         catch (err) {
           console.log('Error => ', err);
         }
   }
-  const depPut = () => {}
+  const depPut = async(e, aid, id) => {
+    e.preventDefault()
+      console.log('Deposit Put')
+        console.log(e.target.name.value, e.target.amount.value)
+        const url = process.env.REACT_APP_BACKEND_URL + '/portal/accounts/' + aid + '/deposits/' + id
+        const editedDepBody = {
+          name: (e.target.name.value)
+            ? e.target.name.value : e.target.name.placeholder,
+          amount: (e.target.amount.value)
+            ? e.target.amount.value : e.target.amount.placeholder
+        }
+        console.log(editedDepBody)
+        try {
+          await fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(editedDepBody),
+            credentials: "include",
+            headers: {
+              'Content-Type': 'application/json'
+            }          
+          })
+          .then(res => {
+            if(res.status === 200) {
+              return res.json()
+            } else {
+              console.log('RES STATUS NOT 200')
+              return []
+            }
+          }).then(data => {
+              console.log(data.data)
+              props.acctsGet()
+              depsGet(aid)
+          })     
+        }
+        catch (err) {
+          console.log('Error => ', err);
+        }    
+  }
 
   const transDel = () => {}
   const depDel = () => {}
@@ -217,7 +257,7 @@ const Account = (props) => {
             <Col>
               <ButtonGroup className="me2">
                 <History id={props.acct.id} hist={hist} histGet={histGet}/>
-                <Deposit id={props.acct.id} deps={deps} depPost={depPost} depsGet={depsGet}/>
+                <Deposit id={props.acct.id} deps={deps} depPost={depPost} depPut={depPut} depsGet={depsGet}/>
                 <Transaction id={props.acct.id} trans={trans} transPost={transPost} transPut={transPut} transGet={transGet}/>
               </ButtonGroup>
             </Col>

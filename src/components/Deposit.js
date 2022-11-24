@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, ButtonGroup, Row, Col, Table } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import AddDep from './AddDep'
+import EditDep from './EditDep';
 
 const Deposit = (props) => {
     // START MODAL STATE //
@@ -40,7 +41,7 @@ const Deposit = (props) => {
                         <td>${dep.amount}</td>
                         <td>
                             <ButtonGroup>
-                                <Button variant="outline-danger">Edit</Button>
+                                <EditDep dep={dep} id={dep.id} aid={props.id} depPut={props.depPut}></EditDep>
                                 <Button variant="outline-danger">Delete</Button>
                             </ButtonGroup>
                         </td>

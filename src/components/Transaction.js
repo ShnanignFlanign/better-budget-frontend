@@ -26,11 +26,11 @@ const Transaction = (props) => {
                 <Table striped bordered hover responsive="md" size="sm">
                     <thead>
                     <tr>
-                        <th>Date:</th>
-                        <th>Name:</th>
-                        <th>Amount:</th>
-                        <th>Category:</th>
-                        <th>Description:</th>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Description</th>
                         <th>Options:</th>
                     </tr>
                     </thead>
@@ -45,7 +45,7 @@ const Transaction = (props) => {
                         <td>{tran.description}</td>
                         <td>
                             <ButtonGroup>
-                                <EditTrans tran={tran} id={tran.id} aid={props.id} transPut={props.transPut}></EditTrans>
+                                <EditTrans setShow={setShow} tran={tran} id={tran.id} aid={props.id} transPut={props.transPut}></EditTrans>
                                 <Button variant="outline-danger">Delete</Button>
                             </ButtonGroup>
                         </td>

@@ -34,9 +34,8 @@ const History = (props) => {
                 {props.hist.slice(0).reverse().map((hist, i) => {
                     return(
                     <tr key={i}>
-                        
                         {(hist.type === "deposit")
-                        ?<><td>{hist.type.toUpperCase()}</td></> :<><td>WITHDRAWAL</td> </>}
+                        ?<td>{hist.type.toUpperCase()}</td> :<td>WITHDRAWAL</td>}
                         <td>{hist.date}</td>
                         <td>{hist.name}</td>
                         <td>${hist.amount}</td>
