@@ -42,7 +42,7 @@ const Deposit = (props) => {
                         <td>
                             <ButtonGroup>
                                 <EditDep dep={dep} id={dep.id} aid={props.id} depPut={props.depPut}></EditDep>
-                                <DepDel/>
+                                <DepDel depDel={props.depDel} id={dep.id} aid={props.id} />
                             </ButtonGroup>
                         </td>
                     </tr>

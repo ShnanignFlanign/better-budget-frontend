@@ -280,7 +280,7 @@ const Account = (props) => {
             }
           }).then(data => {
               console.log(data.data)
-              transGet(aid)
+              depsGet(aid)
           })     
         }
         catch (err) {
@@ -311,7 +311,7 @@ const Account = (props) => {
             <Col>
               <ButtonGroup className="me2">
                 <History id={props.acct.id} hist={hist} histGet={histGet}/>
-                <Deposit id={props.acct.id} deps={deps} depPost={depPost} depPut={depPut} depsGet={depsGet}/>
+                <Deposit id={props.acct.id} deps={deps} depPost={depPost} depPut={depPut} depsGet={depsGet} depDel={depDel}/>
                 <Transaction id={props.acct.id} trans={trans} transPost={transPost} transPut={transPut} transGet={transGet} transDel={transDel}/>
               </ButtonGroup>
             </Col>

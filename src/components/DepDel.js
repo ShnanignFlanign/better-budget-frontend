@@ -12,7 +12,8 @@ const DepDel = (props) => {
 
 
     const handleSubmit = (e) => {
-        console.log("handle submit was hit!")
+        e.preventDefault()
+        props.depDel(e, props.aid, props.id)
         handleClose()
     }
     return( 
