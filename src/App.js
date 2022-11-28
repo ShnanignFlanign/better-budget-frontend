@@ -205,7 +205,28 @@ function App() {
         }    
   }
 
-  const acctDel = () => {}
+  const acctDel = async(e, id) => {
+    e.preventDefault()
+      console.log('Account Delete')
+        const url = process.env.REACT_APP_BACKEND_URL + '/portal/accounts/' + id
+        fetch(url, {
+          method: 'DELETE',
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(res => {
+            if(res.status === 200) {
+            return res.json()
+            } else {
+            return []
+            }
+        }).then(data => {
+          console.log(data.data)
+          acctsGet()
+        })
+  }
 
   
   return (
@@ -216,7 +237,7 @@ function App() {
       <AddAcct acctPost={acctPost}/>
       { accts.map((acct, i) => {
         return(
-        <Account acctsGet={acctsGet} key={acct.id} acct={acct} acctPut={acctPut}></Account>
+        <Account acctDel={acctDel} acctsGet={acctsGet} key={acct.id} acct={acct} acctPut={acctPut}></Account>
         )
       })}
       </>
