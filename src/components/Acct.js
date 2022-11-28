@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Row, Col, Card } from 'react-bootstrap';
+import { ButtonGroup, Row, Col, Card } from 'react-bootstrap';
 import Deposit from './Deposit';
 import Transaction from './Transaction';
 import History from './History';
@@ -9,11 +9,7 @@ import AcctDel from './AcctDel';
 
 
 const Account = (props) => {
-  // START MODAL STATE //
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  // END MODAL STATE // 
+  
   const [trans, setTrans] = useState([])
   const [deps, setDeps] = useState([])
   const [hist, setHist] = useState([])
@@ -235,8 +231,62 @@ const Account = (props) => {
         }    
   }
 
-  const transDel = () => {}
-  const depDel = () => {}
+  const transDel = async(e, aid, id) => {
+    e.preventDefault()
+      console.log('Transaction Delete')
+        const url = process.env.REACT_APP_BACKEND_URL + '/portal/accounts/' + aid + '/transactions/' + id
+        try {
+          await fetch(url, {
+            method: 'DELETE',
+            credentials: "include",
+            headers: {
+              'Content-Type': 'application/json'
+            }          
+          })
+          .then(res => {
+            if(res.status === 200) {
+              return res.json()
+            } else {
+              console.log('RES STATUS NOT 200')
+              return []
+            }
+          }).then(data => {
+              console.log(data.data)
+              transGet(aid)
+          })     
+        }
+        catch (err) {
+          console.log('Error => ', err);
+        }
+  }
+  const depDel = async(e, aid, id) => {
+    e.preventDefault()
+      console.log('Deposit Delete')
+        const url = process.env.REACT_APP_BACKEND_URL + '/portal/accounts/' + aid + '/deposits/' + id
+        try {
+          await fetch(url, {
+            method: 'DELETE',
+            credentials: "include",
+            headers: {
+              'Content-Type': 'application/json'
+            }          
+          })
+          .then(res => {
+            if(res.status === 200) {
+              return res.json()
+            } else {
+              console.log('RES STATUS NOT 200')
+              return []
+            }
+          }).then(data => {
+              console.log(data.data)
+              transGet(aid)
+          })     
+        }
+        catch (err) {
+          console.log('Error => ', err);
+        }
+  }
 
 
 
@@ -262,7 +312,7 @@ const Account = (props) => {
               <ButtonGroup className="me2">
                 <History id={props.acct.id} hist={hist} histGet={histGet}/>
                 <Deposit id={props.acct.id} deps={deps} depPost={depPost} depPut={depPut} depsGet={depsGet}/>
-                <Transaction id={props.acct.id} trans={trans} transPost={transPost} transPut={transPut} transGet={transGet}/>
+                <Transaction id={props.acct.id} trans={trans} transPost={transPost} transPut={transPut} transGet={transGet} transDel={transDel}/>
               </ButtonGroup>
             </Col>
               

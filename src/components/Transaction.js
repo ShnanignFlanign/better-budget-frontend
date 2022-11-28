@@ -47,7 +47,7 @@ const Transaction = (props) => {
                         <td>
                             <ButtonGroup>
                                 <EditTrans setShow={setShow} tran={tran} id={tran.id} aid={props.id} transPut={props.transPut}></EditTrans>
-                                <TransDel/>
+                                <TransDel transDel={props.transDel} id={tran.id} aid={props.id}/>
                             </ButtonGroup>
                         </td>
                     </tr>
