@@ -4,6 +4,7 @@ import Deposit from './Deposit';
 import Transaction from './Transaction';
 import History from './History';
 import EditAcct from './EditAcct';
+import AcctDel from './AcctDel';
 
 
 
@@ -237,10 +238,7 @@ const Account = (props) => {
   const transDel = () => {}
   const depDel = () => {}
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    props.acctDel(e, props.acct.id)
-}
+
 
   // need to add PUT ADD and DELETE routes for deposits and transactions here //
 
@@ -271,7 +269,7 @@ const Account = (props) => {
             <Col>
               <ButtonGroup>
                 <EditAcct acct={props.acct} id={props.acct.id} acctPut={props.acctPut} />
-                <Button variant="outline-danger" onClick={handleSubmit}>Delete</Button>
+                <AcctDel acctDel={props.acctDel} id={props.acct.id} />
               </ButtonGroup>
             </Col>
           </Row>

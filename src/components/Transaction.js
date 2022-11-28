@@ -3,6 +3,7 @@ import { Button, ButtonGroup, Row, Col, Table } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import AddTrans from './AddTrans';
 import EditTrans from './EditTrans';
+import TransDel from './TransDel';
 
 const Transaction = (props) => {
     // START MODAL STATE //
@@ -46,7 +47,7 @@ const Transaction = (props) => {
                         <td>
                             <ButtonGroup>
                                 <EditTrans setShow={setShow} tran={tran} id={tran.id} aid={props.id} transPut={props.transPut}></EditTrans>
-                                <Button variant="outline-danger">Delete</Button>
+                                <TransDel/>
                             </ButtonGroup>
                         </td>
                     </tr>
