@@ -27,8 +27,26 @@ const Welcome = () => {
             </Row>
             </Card.Footer>
         </Card>
-
-       
+        <Card size="md" >
+            <Card.Title>Account Name: Sample Acct 2</Card.Title>
+            <Card.Body>
+            <Row>
+                <Col>Balance: $$ </Col>
+                <Col></Col>
+            </Row>
+            </Card.Body>
+            <Card.Footer>
+            <Row>
+                <Col>
+                    <ButtonGroup className="me2">
+                        <SampleModal/>
+                        <SampleModal/>
+                        <SampleModal/>
+                    </ButtonGroup>
+                </Col>
+            </Row>
+            </Card.Footer>
+        </Card>
         </>
     )
 }
