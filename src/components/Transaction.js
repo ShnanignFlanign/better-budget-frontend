@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Row, Col, Table } from 'react-bootstrap';
+import { Button, ButtonGroup, Table } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import AddTrans from './AddTrans';
 import EditTrans from './EditTrans';

@@ -15,7 +15,7 @@ function App() {
 
   const signIn = async (e) => {
     e.preventDefault()
-    console.log('loginUser')
+    console.log('User Login')
       console.log(e.target.email.value)
       const url = process.env.REACT_APP_BACKEND_URL + '/user/login'
       const loginBody = {
@@ -39,7 +39,6 @@ function App() {
             return []
           }
         }).then(data => {
-            console.log(data.data)
             setUser(data.data)
             acctsGet()
         })     
@@ -51,7 +50,7 @@ function App() {
 
   const userReg = async (e) => {
     e.preventDefault()
-    console.log('loginUser')
+    console.log('User Register')
       console.log(e.target.email.value)
       const url = process.env.REACT_APP_BACKEND_URL + '/user/signup'
       const regBody = {
@@ -76,7 +75,6 @@ function App() {
             return []
           }
         }).then(data => {
-            console.log(data.data)
             setUser(data.data)
             acctsGet()
         })     
@@ -88,6 +86,7 @@ function App() {
 
   const logOut = async (e) => {
     e.preventDefault()
+    console.log("Log Out")
     const url = process.env.REACT_APP_BACKEND_URL + '/user/logout'
     try {
       const response = await fetch(url, {
@@ -97,7 +96,6 @@ function App() {
           "Content-Type": "application/json"
         }
       })
-      console.log(response)
       if (response.status === 200) {
         console.log("Logged Out User")
         setUser({})
@@ -112,6 +110,7 @@ function App() {
   }// END log out //
 
   const acctsGet = () => {
+    console.log("Accounts Get")
     const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/"
     fetch(url, {
       credentials: "include",
@@ -126,7 +125,6 @@ function App() {
         return []
         }
     }).then(data => {
-        console.log(data.data)
         setAccts(data.data)
     })
   }// END ACCTSGET() //
@@ -158,7 +156,6 @@ function App() {
             return []
           }
         }).then(data => {
-            console.log(data.data)
             acctsGet()
         })     
       }
@@ -196,7 +193,6 @@ function App() {
               return []
             }
           }).then(data => {
-              console.log(data.data)
               acctsGet()
           })     
         }
@@ -233,7 +229,8 @@ function App() {
     <div className="App">
       <Header user={user} logOut={logOut} userReg={userReg} signIn={signIn} />
       { (user.username) 
-      ?<> <h1>{user.username}'s Accounts </h1> 
+      ?<> <h1>Better Budget</h1> 
+      <h4>{user.username}'s Accounts</h4>
       <AddAcct acctPost={acctPost}/>
       { accts.map((acct, i) => {
         return(
@@ -242,8 +239,6 @@ function App() {
       })}
       </>
       : <Welcome></Welcome> } 
-      
-      {/* Put logged in view vs logged out view in one terinary operator. No need for user portal component or AcctItem component. Welcome Component can just show example accounts */}
       
     </div>
   );

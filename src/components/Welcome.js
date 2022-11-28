@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Button, ButtonGroup, Row, Col, Card } from 'react-bootstrap';
+import React from 'react';
+import { ButtonGroup, Row, Col, Card } from 'react-bootstrap';
 import SampleModal from './SampleModal';
 const Welcome = () => {
 
     return (
         <>
-        <h1>Welcome</h1>
-        <h4>Create Banks Accounts And Track Transactions</h4>
+        <h1>Better Budget</h1>
+        <h4>Create Bank Accounts And Track Transactions</h4>
         <Card size="md" >
-            <Card.Title>Account Name: Acct Name Here</Card.Title>
+            <Card.Title>Account Name: Sample Acct</Card.Title>
             <Card.Body>
             <Row>
                 <Col>Balance: $$ </Col>

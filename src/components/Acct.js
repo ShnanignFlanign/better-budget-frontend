@@ -17,6 +17,7 @@ const Account = (props) => {
   // START crud methods //
 
   const depsGet = (id) => {
+    console.log("Deposits Get")
     const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/deposits"
     fetch(url, {
       credentials: "include",
@@ -31,12 +32,12 @@ const Account = (props) => {
         return []
         }
     }).then(data => {
-        console.log(data.data)
         setDeps(data.data)
     })
   } // END DEPSGET() // 
 
   const transGet = (id) => {
+    console.log("Transaction Get")
       const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/transactions"
       fetch(url, {
         credentials: "include",
@@ -51,12 +52,12 @@ const Account = (props) => {
           return []
           }
       }).then(data => {
-          console.log(data.data)
           setTrans(data.data)
       })
   } // END TRANSGET() //
 
   const histGet = (id) => {
+    console.log("History Get")
     const url = process.env.REACT_APP_BACKEND_URL  + "/portal/accounts/" + id + "/history"
       fetch(url, {
         credentials: "include",
@@ -71,7 +72,6 @@ const Account = (props) => {
           return []
           }
       }).then(data => {
-        console.log(data.data.History)
           setHist(data.data.History)
       })
   }// END HISTGET() //
@@ -104,7 +104,6 @@ const Account = (props) => {
               return []
             }
           }).then(data => {
-              console.log(data.data)
               props.acctsGet()
               transGet(id)
           })     
@@ -140,7 +139,6 @@ const Account = (props) => {
             return []
           }
         }).then(data => {
-            console.log(data.data)
             props.acctsGet()
             depsGet(id)
         })     
@@ -183,7 +181,6 @@ const Account = (props) => {
               return []
             }
           }).then(data => {
-              console.log(data.data)
               props.acctsGet()
               transGet(aid)
           })     
@@ -221,7 +218,6 @@ const Account = (props) => {
               return []
             }
           }).then(data => {
-              console.log(data.data)
               props.acctsGet()
               depsGet(aid)
           })     
@@ -251,7 +247,7 @@ const Account = (props) => {
               return []
             }
           }).then(data => {
-              console.log(data.data)
+            console.log(data.data)
               transGet(aid)
           })     
         }
