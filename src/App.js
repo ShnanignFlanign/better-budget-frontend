@@ -232,11 +232,14 @@ function App() {
       ?<> <h1>Better Budget</h1> 
       <h4>{user.username}'s Accounts</h4>
       <AddAcct acctPost={acctPost}/>
-      { accts.map((acct, i) => {
+      { (accts)
+        ? accts.map((acct, i) => {
         return(
         <Account acctDel={acctDel} acctsGet={acctsGet} key={acct.id} acct={acct} acctPut={acctPut}></Account>
         )
-      })}
+      })
+        : <h5>Created accounts will display information here</h5>
+      }
       </>
       : <Welcome></Welcome> } 
       
