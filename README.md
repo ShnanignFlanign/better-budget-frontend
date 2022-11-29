@@ -24,7 +24,9 @@ With a React front end and a Flask/Python back end, this application utilizes Po
 ## For The Future
 > Currently, there is no way for a user to recover their password or change anything about their profile information. Though this application does not synchronize any actual bank account information from users, I believe this functionality would make users feel more comfortable using Better Budget.
 > Additionally, organization by expense category accompanied by graphical representations of spending by category would provide helpful visual aids for those interacting with their Better Budget accounts. 
-> Finally, implementing some sort of expense constraint by category would also give users a helpful tool for budget management within this application.
+> Implementing some sort of expense constraint by category would also give users a helpful tool for budget management within this application.
+> Transfers between accounts.
+> Lastly, a credit account model would be another future model that would be beneficial for this application.
 
 ## Known Issues 
 > Currently, Cross-Origin Access errors are present when using the application on Safari. As one of the primary potential use cases for this application would be on one's mobile device, this is a glaring issue that needs resolution for the future.
