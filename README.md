@@ -20,3 +20,11 @@ With a React front end and a Flask/Python back end, this application utilizes Po
 
 ## ERD
 <img width="843" alt="Screenshot 2022-11-02 at 5 19 21 PM" src="https://user-images.githubusercontent.com/104398805/204670135-494b3d42-3f55-4337-ac91-c11f78a54d20.png">
+
+## For The Future
+> Currently, there is no way for a user to recover their password or change anything about their profile information. Though this application does not synchronize any actual bank account information from users, I believe this functionality would make users feel more comfortable using Better Budget.
+> Additionally, organization by expense category accompanied by graphical representations of spending by category would provide helpful visual aids for those interacting with their Better Budget accounts. 
+> Finally, implementing some sort of expense constraint by category would also give users a helpful tool for budget management within this application.
+
+## Known Issues 
+> Currently, Cross-Origin Access errors are present when using the application on Safari. As one of the primary potential use cases for this application would be on one's mobile device, this is a glaring issue that needs resolution for the future.
