@@ -21,6 +21,14 @@ With a React front end and a Flask/Python back end, this application utilizes Po
 ## ERD
 <img width="843" alt="Screenshot 2022-11-02 at 5 19 21 PM" src="https://user-images.githubusercontent.com/104398805/204670135-494b3d42-3f55-4337-ac91-c11f78a54d20.png">
 
+##Screenshots 
+<img width="531" alt="better-budget-6" src="https://user-images.githubusercontent.com/104398805/212394283-6ead4e66-bf64-42f0-8992-2bf9bf33847e.png">
+<img width="528" alt="better-budget-5" src="https://user-images.githubusercontent.com/104398805/212394332-2e5930e4-c216-4e51-b7b0-9fb12ff817f6.png">
+<img width="531" alt="better-budget-4" src="https://user-images.githubusercontent.com/104398805/212394365-d235c91d-d86d-45eb-9bf6-9a592a380745.png">
+<img width="531" alt="better-budget-2" src="https://user-images.githubusercontent.com/104398805/212394383-8a7483aa-c0bc-4607-a335-3e7b386ee045.png">
+<img width="531" alt="better-budget-3" src="https://user-images.githubusercontent.com/104398805/212394408-dbb2eb9b-828f-4fcc-84e7-e97fa70fbe83.png">
+
+
 ## For The Future
 > Currently, there is no way for a user to recover their password or change anything about their profile information. Though this application does not synchronize any actual bank account information from users, I believe this functionality would make users feel more comfortable using Better Budget.
 > Additionally, organization by expense category accompanied by graphical representations of spending by category would provide helpful visual aids for those interacting with their Better Budget accounts. 
