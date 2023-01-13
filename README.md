@@ -21,7 +21,7 @@ With a React front end and a Flask/Python back end, this application utilizes Po
 ## ERD
 <img width="843" alt="Screenshot 2022-11-02 at 5 19 21 PM" src="https://user-images.githubusercontent.com/104398805/204670135-494b3d42-3f55-4337-ac91-c11f78a54d20.png">
 
-##Screenshots 
+## Screenshots 
 <img width="531" alt="better-budget-6" src="https://user-images.githubusercontent.com/104398805/212394283-6ead4e66-bf64-42f0-8992-2bf9bf33847e.png">
 <img width="528" alt="better-budget-5" src="https://user-images.githubusercontent.com/104398805/212394332-2e5930e4-c216-4e51-b7b0-9fb12ff817f6.png">
 <img width="531" alt="better-budget-4" src="https://user-images.githubusercontent.com/104398805/212394365-d235c91d-d86d-45eb-9bf6-9a592a380745.png">
